@@ -66,9 +66,11 @@ then...
 
     import { address } from 'addresspinas'
 
-    (function (){
-        console.log(address.getRegionProvince("07"))
-    }) ();
+
+    (function () {
+        address.getRegionProvince("07").then((res) => console.log(res));
+    })();
+
 
     {
     name: 'REGION VII (CENTRAL VISAYAS)',
@@ -112,8 +114,10 @@ then...
     const { address } = require("./index");
 
     (function (){
-        console.log(address.getCityMunOfProvince("0722"))
+        address.getCityMunOfProvince("0722").then((res) => console.log(res))
     })();
+
+
 
     {
         name: 'CEBU',
@@ -153,8 +157,9 @@ then...
     const { address } = require("./index");
 
     (function () {
-        console.log(address.getCityMunBrgy("072201"));
+    address.getCityMunBrgy("072201").then((res) => console.log(res));
     })();
+
 
 
 

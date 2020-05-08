@@ -6,7 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edcranger/addresspinas.git"
+  },
   "author": "Edison Ocampo\u001b[A\u001b[D\u001b[B\u001b[C",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {},
+  "homepage": "https://github.com/edcranger/addresspinas"
 }
