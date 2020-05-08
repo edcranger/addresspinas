@@ -1,0 +1,12 @@
+{
+  "name": "addresspinas",
+  "version": "1.0.0",
+  "description": "Simple module for address in the philippines.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Edison Ocampo\u001b[A\u001b[D\u001b[B\u001b[C",
+  "license": "MIT",
+  "dependencies": {}
+}
