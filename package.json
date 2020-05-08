@@ -13,5 +13,11 @@
   "author": "Edison Ocampo\u001b[A\u001b[D\u001b[B\u001b[C",
   "license": "MIT",
   "dependencies": {},
-  "homepage": "https://github.com/edcranger/addresspinas"
+  "homepage": "https://github.com/edcranger/addresspinas",
+  "keywords": [
+    "philippine locations",
+    "barangays",
+    "regions",
+    "provinces"
+  ]
 }
