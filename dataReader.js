@@ -1,24 +1,26 @@
-const fs = require("fs");
+// const fs = require("fs");
+const { region } = require("./data/region.json");
 
-const region = JSON.parse(
-  fs.readFileSync(`${__dirname}/data/region.json`, "utf-8")
-);
+console.log(region);
 
-const province = JSON.parse(
-  fs.readFileSync(`${__dirname}/data/province.json`, "utf-8")
-);
+// const province = JSON.parse(
+//   fs.readFileSync(
+//     `${path.dirname(require.main.filename)}/data/province.json`,
+//     "utf-8"
+//   )
+// );
 
-const cityMun = JSON.parse(
-  fs.readFileSync(`${__dirname}/data/city-mun.json`, "utf-8")
-);
+// const cityMun = JSON.parse(
+//   fs.readFileSync(`${__dirname}/data/city-mun.json`, "utf-8")
+// );
 
-const brgy = JSON.parse(
-  fs.readFileSync(`${__dirname}/data/brgy.json`, "utf-8")
-);
+// const brgy = JSON.parse(
+//   fs.readFileSync(`${__dirname}/data/brgy.json`, "utf-8")
+// );
 
-module.exports = {
-  region,
-  province,
-  cityMun,
-  brgy,
-};
+// module.exports = {
+//   region,
+//   province,
+//   cityMun,
+//   brgy,
+// };
