@@ -1,6 +1,6 @@
 {
   "name": "addresspinas",
-  "version": "1.0.3",
+  "version": "1.2.0",
   "description": "This is a simple package for getting a  list of Regions, Provinces, Cities/Muninicapals and Barangays of the Philippines that could be useful for registration forms or other app functionality.",
   "main": "index.js",
   "scripts": {
