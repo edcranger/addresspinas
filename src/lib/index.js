@@ -1,21 +1,21 @@
-const region = require("../data/region.json");
-const province = require("../data/province.json");
+const region = require("../data/regions.json");
+const province = require("../data/provinces.json");
 const cityMun = require("../data/city-mun.json");
-const brgy = require("../data/brgy.json");
+const brgy = require("../data/barangays.json");
 
 let philData = {
-  allRegions: { name: "All Regions", regions: region.RECORDS },
+  allRegions: { name: "All Regions", regions: region },
   allProvinces: {
     name: "All Provinces",
-    provinces: province.RECORDS,
+    provinces: province,
   },
   allCitiesAndMunicipal: {
     name: "All Municipal",
-    citiesAndMunicipals: cityMun.RECORDS,
+    citiesAndMunicipals: cityMun,
   },
   allBrgys: {
     name: "All Barangays",
-    barangays: brgy.data,
+    barangays: brgy,
   },
 };
 
@@ -24,51 +24,42 @@ const { allRegions, allProvinces, allCitiesAndMunicipal, allBrgys } = philData;
 class Address {
   filters(philData, philData2, params, type) {
     const queryType = {
-      region: ["provinces", (i) => i.regCode === params],
-      province: ["cityAndMun", (i) => i.provCode === params],
-      cityMun: ["barangays", (i) => i.citymunCode === params],
+      region: ["provinces", (i) => i.reg_code === params],
+      province: ["cityAndMun", (i) => i.prov_code === params],
+      cityMun: ["barangays", (i) => i.mun_code === params],
     };
 
-    const name = philData.find(queryType[type][1]),
-      datas = philData2.filter(queryType[type][1]);
-
     return {
-      name: name,
-      [queryType[type][0]]: datas,
+      name: philData.find(queryType[type][1]),
+      [queryType[type][0]]: philData2.filter(queryType[type][1]),
     };
   }
 
-  async getRegionProvince(reg_code) {
-    const regionProv = await this.filters(
+   getProvinceOfRegion(reg_code) {
+    return  this.filters(
       allRegions.regions,
       allProvinces.provinces,
       reg_code,
       "region"
-    );
-
-    return regionProv;
+    )
   }
 
-  async getCityMunOfProvince(prov_code) {
-    const cityMun = await this.filters(
+   getCityMunOfProvince(prov_code) {
+    return this.filters(
       allProvinces.provinces,
       allCitiesAndMunicipal.citiesAndMunicipals,
       prov_code,
       "province"
-    );
-
-    return cityMun;
+    )
   }
 
-  async getCityMunBrgy(ctyMun_code) {
-    const brgy = await this.filters(
+   getBarangaysOfCityMun(ctyMun_code) {
+    return  this.filters(
       allCitiesAndMunicipal.citiesAndMunicipals,
       allBrgys.barangays,
       ctyMun_code,
       "cityMun"
     );
-
-    return brgy;
   }
 }
 

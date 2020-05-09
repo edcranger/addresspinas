@@ -2,19 +2,23 @@
 
 ### What is this for?
 
-This is a simple package for getting a complete list of Regions, Provinces, Cities/Muninicapals and Barangays of the Philippines that could be useful for registration forms or other app functionality.
+This is a simple package for getting a  list of Regions, Provinces, Cities/Muninicapals and Barangays of the Philippines that could be useful for registration forms or other app functionality.
 
 # Installation
 
     npm i addresspinas --save
 
-then...
 
+# Usage
     import { allData, address } from 'addresspinas'
+
+    or..
+
+    const { allData, address } = require('addresspinas') 
 
 ### Fetch all information in an array.
 
-##### It may cause some latency due to the size of the json data.
+##### Returns an array of info.
 
     const regions = philData.allRegions
 
@@ -28,176 +32,140 @@ then...
 
 ##### Codes needed to pass into the function
 
-    regCode // use for fetching data connected to a region.
+    reg_code // use for fetching data connected to a region.
         {
-            "id": 8,
-            "psgcCode": "070000000",
-            "regDesc": "REGION VII (CENTRAL VISAYAS)",
-            "regCode": "07"
+            "name": "REGION VII (CENTRAL VISAYAS)",
+            "reg_code": "07"
         }
 
 
-    provCode // for fetching data connected to a province.
+    prov_code // for fetching data connected to a province.
         {
-            "id": 24,
-            "psgcCode": "175200000",
-            "provDesc": "ORIENTAL MINDORO",
-            "regCode": "17",
-            "provCode": "1752"
+            "name": "ORIENTAL MINDORO",
+            "reg_code": "17",
+            "prov_code": "1752"
         }
 
-    citymunCode // for fetching data connected to a city or municipal.
+    mun_code // for fetching data connected to a city or municipal.
         {
-            "id": 1064,
-            "psgcCode": "086406000",
-            "citymunDesc": "LILOAN",
-            "regCode": "08",
-            "provCode": "0864",
-            "citymunCode": "086406"
+            "name": "LILOAN",
+            "prov_code": "0864",
+            "city_code": "086406"
         },
 
-# Usage
+# API
 
 #### (Make sure that the data you pass into the function is a " string ")
 
 ### Get all Region's provinces
 
-    //address.getRegionProvince(regCode)
+    //address.getProvinceOfRegion(reg_code)
 
     import { address } from 'addresspinas'
 
 
-    (function () {
-        address.getRegionProvince("07").then((res) => console.log(res));
-    })();
+    const provinces = address.getProvinceOfRegion("07")
 
+    console.log(provinces)
 
-    {
-    name: 'REGION VII (CENTRAL VISAYAS)',
-    provinces:
-        [
-            {
-                id: 39,
-                psgcCode: '071200000',
-                provDesc: 'BOHOL',
-                regCode: '07',
-                provCode: '0712'
-            },
-            {
-                id: 40,
-                psgcCode: '072200000',
-                provDesc: 'CEBU',
-                regCode: '07',
-                provCode: '0722'
-            },
-            {
-                id: 41,
-                psgcCode: '074600000',
-                provDesc: 'NEGROS ORIENTAL',
-                regCode: '07',
-                provCode: '0746'
-            },
-            {
-                id: 42,
-                psgcCode: '076100000',
-                provDesc: 'SIQUIJOR',
-                regCode: '07',
-                provCode: '0761'
-            }
-        ]
-    }
+    //RETURNS
+
+        name: 'REGION VII (CENTRAL VISAYAS)',
+        provinces:
+            [
+                {
+                    name: 'BOHOL',
+                    reg_code: '07',
+                    prov_code: '0712'
+                },
+                {
+                    name: 'CEBU',
+                    reg_code: '07',
+                    prov_code: '0722'
+                }
+            ]
+    
 
 ### Get all Province's cities and municipals
 
-    // address.getCityMunOfProvince(provCode)
 
     const { address } = require("./index");
 
-    (function (){
-        address.getCityMunOfProvince("0722").then((res) => console.log(res))
-    })();
+    const cities = address.getCityMunOfProvince("0722")
 
+    console.log(cities)
 
-
-    {
+    //RETURNS
+    
         name: 'CEBU',
         cityOrMunicipal:
         [
             {
-                id: 859,
-                psgcCode: '072201000',
-                citymunDesc: 'ALCANTARA',
-                regCode: '07',
-                provCode: '0722',
-                citymunCode: '072201'
+                name: 'ALCANTARA',
+                prov_code: '0722',
+                mun_code: '072201'
             },
             {
-                id: 860,
-                psgcCode: '072202000',
-                citymunDesc: 'ALCOY',
-                regCode: '07',
-                provCode: '0722',
-                citymunCode: '072202'
-            },
-            {
-                id: 861,
-                psgcCode: '072203000',
-                citymunDesc: 'ALEGRIA',
-                regCode: '07',
-                provCode: '0722',
-                citymunCode: '072203'
+                name: 'ALCOY',
+                prov_code: '0722',
+                mun_code: '072202'
             }
         ]
-    }
+    
 
 ### Get all City/Municipal's barangays
 
-    //address.getCityMunBrgy(citymunCode)
-
     const { address } = require("./index");
+   
+    const barangay = address.getBarangaysOfCityMun("072201")
 
-    (function () {
-    address.getCityMunBrgy("072201").then((res) => console.log(res));
-    })();
+    console.log(barangay)
 
+    //RETURNS
 
-
-
-    {
         name: 'ALCANTARA',
         barangays:
         [
             {
-                id: 22780,
-                brgyCode: '072201001',
-                brgyDesc: 'Cabadiangan',
-                regCode: '07',
-                provCode: '0722',
-                citymunCode: '072201'
+
+                name: '072201001',
+                mun_code: '072201'
             },
             {
-                id: 22781,
-                brgyCode: '072201002',
                 brgyDesc: 'Cabil-isan',
-                regCode: '07',
-                provCode: '0722',
-                citymunCode: '072201'
-            },
-            {
-                id: 22782,
-                brgyCode: '072201003',
-                brgyDesc: 'Candabong',
-                regCode: '07',
-                provCode: '0722',
-                citymunCode: '072201'
-            },
-            {
-                id: 22783,
-                brgyCode: '072201004',
-                brgyDesc: 'Lawaan',
-                regCode: '07',
-                provCode: '0722',
-                citymunCode: '072201'
-            },
+                mun_code: '072201'
+            }
         ]
-    }
+    
+
+
+
+## Properties and methods
+| Property  | Type  |  Description |
+| ------------ | ------------ | ------------ |
+| reg_code  | string  | code of a specific region which is used as a search parameter.  |
+| prov_code  | string  | code of a specific province which is used as a search parameter.  |
+| mun_code  |  string | code of a specific city or municipality which is used as a search parameter.  |
+| philData.allRegions  |  Array | List of all regions  |
+| philData.allProvinces  |  Array | List of all provinces  |
+| philData.allCitiesAndMunicipal  |  Array | List of all cities and municipals  |
+| philData.allBrgys  |  Array | List of all barangays  |
+| getProvinceOfRegion  |  Function | Get all the provinces of a specific region. *Parameter (reg_code)* |
+| getCityMunOfProvince  |  Function |  Get all the cities and municipalities of a specific province. *Parameter (prov_code)*|
+| getBarangaysOfCityMun  |  Function |  Function |  Get all the barangays of a specific city of municipality. *Parameter (mun_code)*|
+
+
+------------
+
+
+
+
+
+## Credits
+[National Statistical Coordination Board](http://www.nscb.gov.ph/ "National Statistical Coordination Board")
+[clavearnel](https://github.com/clavearnel/philippines-region-province-citymun-brgy "clavearnel")
+[ejcubillas](https://github.com/ejcubillas "ejcubillas")
+
+
+## License 
+[MIT](https://github.com/darklight721/philippines/blob/master/LICENSE "MIT")
