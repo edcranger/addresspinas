@@ -1,6 +1,6 @@
 {
   "name": "addresspinas",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "This is a simple node package for getting a list of Philippines's Regions, Provinces, Cities/Muninicapals and Barangays including zipcodes that could be useful for forms or other app functionality.",
   "main": "index.js",
   "scripts": {
