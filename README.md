@@ -2,7 +2,7 @@
 
 ### What is this for?
 
-This is a simple package for getting a  list of Regions, Provinces, Cities/Muninicapals and Barangays of the Philippines that could be useful for registration forms or other app functionality.
+This is a simple node package for getting a list of Philippines's regions, provinces, cities/muninicapalities and barangays including zipcodes that could be useful for forms or other app functionality.
 
 # Installation
 
