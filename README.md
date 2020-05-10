@@ -128,7 +128,7 @@ This is a simple package for getting a  list of Regions, Provinces, Cities/Munin
         [
             {
 
-                name: '072201001',
+                name: 'Cabadiangan',
                 mun_code: '072201'
             },
             {

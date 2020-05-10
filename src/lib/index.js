@@ -1,7 +1,11 @@
+const zipcodes = require('../data/zipcodes.json')
 const region = require("../data/regions.json");
 const province = require("../data/provinces.json");
 const cityMun = require("../data/city-mun.json");
 const brgy = require("../data/barangays.json");
+
+
+
 
 let philData = {
   allRegions: { name: "All Regions", regions: region },
@@ -54,14 +58,43 @@ class Address {
   }
 
    getBarangaysOfCityMun(ctyMun_code) {
-    return  this.filters(
+     const waa =  this.filters(
       allCitiesAndMunicipal.citiesAndMunicipals,
       allBrgys.barangays,
       ctyMun_code,
       "cityMun"
     );
+
+    console.log(waa)
+
+    return waa
   }
+
+  getZipcode(location) {
+    const bgry = location.name.toLowerCase(), mun = cityMun.find(i => i.mun_code === location.mun_code)
+
+    if(!mun) return null
+    
+    const bar =  Object.keys(zipcodes).filter((zipcode) => {
+      const pa = zipcodes[zipcode].toString().toLowerCase().includes(bgry)
+      if(pa)  return pa
+     }) 
+
+     const  muni =  Object.keys(zipcodes).filter((zipcode) => {
+       const po = zipcodes[zipcode].toString().toLowerCase().includes(mun.name.toLowerCase())
+      if(po) 
+        return po
+     }) 
+   
+     if(bar.length !== 0)  return bar
+     
+    return muni
+         
 }
+
+}
+
+
 
 const address = new Address();
 
