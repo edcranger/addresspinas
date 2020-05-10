@@ -55,7 +55,7 @@ This is a simple package for getting a  list of Regions, Provinces, Cities/Munin
 
 # API
 
-#### (Make sure that the data you pass into the function is a " string ")
+#### (Make sure that the data you pass into the function is a "string")
 
 ### Get all Region's provinces
 
@@ -136,6 +136,25 @@ This is a simple package for getting a  list of Regions, Provinces, Cities/Munin
                 mun_code: '072201'
             }
         ]
+
+
+### Get barangay's zipcode 
+##### Returns result(s) as an array since there are places that do have a same name.
+
+##### Disclaimer: If zipcode cannot be found by barangay it will automatically look for the municipal zipcode since most of the barangays in the province use municipal zipcode.
+
+##### Example: There are 2 places in the philippines that are named Ramon Magsaysay. Therefore, It will return an array with 2 index in it.
+    
+    
+    const { address } = require("./index");
+   
+    const getZip = address.getZipcode({ name: 'Ramon Magsaysay', mun_code: '137404' })
+
+    console.log(getZip)
+
+    //RETURNS
+
+       [ '1105', '7024' ]
     
 
 
@@ -152,8 +171,8 @@ This is a simple package for getting a  list of Regions, Provinces, Cities/Munin
 | philData.allBrgys  |  Array | List of all barangays  |
 | getProvinceOfRegion  |  Function | Get all the provinces of a specific region. *Parameter (reg_code)* |
 | getCityMunOfProvince  |  Function |  Get all the cities and municipalities of a specific province. *Parameter (prov_code)*|
-| getBarangaysOfCityMun  |  Function |  Function |  Get all the barangays of a specific city of municipality. *Parameter (mun_code)*|
-
+| getBarangaysOfCityMun  |  Function  |  Get all the barangays of a specific city of municipality. *Parameter (mun_code)*|
+| getZipcode  |  Function  |  Get the barangay's zipcode initially using the name and if not found it will automatically use the municipal zipcode. *Parameter (Object).  example:  { name: 'Ramon Magsaysay', mun_code: '137404' }*|
 
 ------------
 
