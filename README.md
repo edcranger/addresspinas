@@ -2,7 +2,7 @@
 
 ### What is this for?
 
-This is a simple node package for getting a list of Philippines's regions, provinces, cities/muninicapalities and barangays including zipcodes that could be useful for forms or other app functionality.
+This is a simple javascript library for getting a list of Philippines's regions, provinces, cities/muninicapalities and barangays including zipcodes that could be useful for forms or other app functionality.
 
 # Installation
 
@@ -61,7 +61,7 @@ This is a simple node package for getting a list of Philippines's regions, provi
 
     //address.getProvinceOfRegion(reg_code)
 
-    import { address } from 'addresspinas'
+    import {  address } from 'addresspinas'
 
 
     const provinces = address.getProvinceOfRegion("07")
@@ -89,7 +89,7 @@ This is a simple node package for getting a list of Philippines's regions, provi
 ### Get all Province's cities and municipals
 
 
-    const { address } = require("./index");
+    import { address } from 'addresspinas'
 
     const cities = address.getCityMunOfProvince("0722")
 
@@ -115,7 +115,7 @@ This is a simple node package for getting a list of Philippines's regions, provi
 
 ### Get all City/Municipal's barangays
 
-    const { address } = require("./index");
+    import { address } from 'addresspinas'
    
     const barangay = address.getBarangaysOfCityMun("072201")
 
@@ -146,7 +146,7 @@ This is a simple node package for getting a list of Philippines's regions, provi
 ##### Example: There are 2 places in the philippines that are named Ramon Magsaysay. Therefore, It will return an array with 2 index in it.
     
     
-    const { address } = require("./index");
+    import { address } from 'addresspinas'
    
     const getZip = address.getZipcode({ name: 'Ramon Magsaysay', mun_code: '137404' })
 
